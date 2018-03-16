@@ -37,7 +37,7 @@ class GeradorDeSenhas(Gtk.Window):
             tamanho = int(self.entry_tamanho.get_text())
         except ValueError as e:
             print(str(e))
-            #exit(0)
+            exit(0)
 
         senha = ''
 
