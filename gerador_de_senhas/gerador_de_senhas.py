@@ -74,7 +74,21 @@ class GeradorDeSenhas(Gtk.Window):
 
         self.entry_tamanho.connect("activate", self.gerar_senha)
 
+        self.gtk_style()
+
         window.show_all()
+
+    def gtk_style(self):
+
+        css = "style.css"
+        style_provider = Gtk.CssProvider()
+        style_provider.load_from_path(css)
+
+        Gtk.StyleContext.add_provider_for_screen(
+            Gdk.Screen.get_default(),
+            style_provider,
+            Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
+        )
 
 
 if __name__ == '__main__':

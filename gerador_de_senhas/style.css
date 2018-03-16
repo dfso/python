@@ -1,0 +1,35 @@
+#janela {
+  background-color: #212121;
+}
+
+#label1 {
+  color: #2196F3;
+  font-weight: bold;
+
+}
+
+#label2 {
+  color: #2196F3;
+  font-weight: bold;
+}
+
+
+#btn_gerar {
+  background-color: rgb(96,125,139);
+  font-weight: bold;
+
+}
+
+#btn_gerar:hover {
+  border-style: dashed;
+  border-color: red;
+  border-width: 1pt;
+}
+
+#entry_tamanho {
+
+}
+
+#entry_saida {
+
+}
