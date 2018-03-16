@@ -15,7 +15,7 @@
 
 
 #btn_gerar {
-  background-color: rgb(96,125,139);
+  background-color: #757575;
   font-weight: bold;
 
 }
@@ -31,5 +31,6 @@
 }
 
 #entry_saida {
+  font-size: 12pt;
 
 }
