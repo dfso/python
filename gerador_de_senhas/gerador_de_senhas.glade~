@@ -28,8 +28,8 @@ Author: dfso
   <!-- interface-authors dfso -->
   <object class="GtkWindow" id="janela">
     <property name="name">janela</property>
-    <property name="width_request">290</property>
-    <property name="height_request">340</property>
+    <property name="width_request">336</property>
+    <property name="height_request">355</property>
     <property name="can_focus">False</property>
     <property name="opacity">0.98999999999999999</property>
     <property name="title" translatable="yes">Gerador de Senhas @dfso</property>
@@ -122,6 +122,7 @@ Author: dfso
             <property name="margin_right">5</property>
             <property name="margin_top">20</property>
             <property name="editable">False</property>
+            <property name="placeholder_text" translatable="yes">senha gerada</property>
           </object>
           <packing>
             <property name="expand">False</property>

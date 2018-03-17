@@ -46,6 +46,9 @@ class GeradorDeSenhas(Gtk.Window):
 
         except ValueError as e:
             print("errou aqui: %s" % str(e))
+            self.entry_tamanho.set_text("")
+            self.entry_tamanho.set_placeholder_text("Apenas números aqui...")
+            return
 
         senha = ''
 
