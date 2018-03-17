@@ -23,9 +23,5 @@ while (True):
     if dados:
         print("Temperatura: ")
         print(dados.rstrip('\n'))
-    
-else:
-    print("saindo...")
-    arduino.close()
-    print(arduino.is_open)
-exit()
+
+
