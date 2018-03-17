@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+# -*- coding: utf-8 -*-
+
 import gi
 import random
 gi.require_version("Gtk", "3.0")
@@ -34,10 +36,16 @@ class GeradorDeSenhas(Gtk.Window):
 
         tabela = self.get_tabela()
         try:
-            tamanho = int(self.entry_tamanho.get_text())
+            #tamanho = int(self.entry_tamanho.get_text())
+            tamanho = self.entry_tamanho.get_text()
+            if not tamanho:
+                print("tamanho não definido")
+                return
+            else:
+                tamanho = int(tamanho)
+
         except ValueError as e:
-            print(str(e))
-            exit(0)
+            print("errou aqui: %s" % str(e))
 
         senha = ''
 
@@ -45,7 +53,7 @@ class GeradorDeSenhas(Gtk.Window):
             for x in range(tamanho):
                 senha += tabela[int(random.random() * 94)]
         except IndexError as erro:
-            print(str(erro))
+            print("Erro: %s" % str(erro))
             senha = ''
             self.entry_saida.set_text(str(erro))
             pass

@@ -16,21 +16,38 @@
 
 #btn_gerar {
   background-color: #757575;
+  color: #212121;
   font-weight: bold;
-
+  border-radius: 50px;
 }
 
-#btn_gerar:hover {
+GtkButton:hover {
   border-style: dashed;
-  border-color: red;
+  border-color: #2196F3;
   border-width: 1pt;
 }
 
 #entry_tamanho {
+  border-radius: 50px;
 
+}
+
+#btn_limpar {
+  background-color: #757575;
+  color: #212121;
+  font-weight: bold;
+  border-radius: 50px;
+}
+
+#btn_copiar {
+  background-color: #757575;
+  color: #212121;
+  font-weight: bold;
+  border-radius: 50px;
 }
 
 #entry_saida {
   font-size: 12pt;
+  border-radius: 50px;
 
 }
