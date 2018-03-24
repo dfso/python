@@ -7,7 +7,7 @@ import gi
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, Gdk, GLib, GObject
 
-GLADE = "monitor_ds18b20.glade"
+GLADE = "./monitor_ds18b20.glade"
 # cria a classe do programa
 class MonitorDS18B20(Gtk.Window):
 
@@ -56,6 +56,9 @@ class MonitorDS18B20(Gtk.Window):
         port = self.comboPorts.get_active_text()
         baud = self.comboBauds.get_active_text()
         self.arduino = serial.Serial(port, baud)
+
+        if self.arduino.is_open:
+            self.btn_conectar.set_sensitive(False)
         if self.arduino.inWaiting() > 0:
             self.arduino.flushInput()
         self.arduino_id = GLib.timeout_add(10, self.read_data)
@@ -67,9 +70,6 @@ class MonitorDS18B20(Gtk.Window):
             bytes = self.arduino.read(self.arduino.inWaiting())
             data = bytes.decode(encoding="utf-8", errors="strict")
             self.labelTemp.set_text(data)
-            #end_iter = self.textbuffer.get_end_iter()
-            #length = len(data)
-            #self.textbuffer.insert(end_iter, data, length)
 
         return True
 
