@@ -8,7 +8,7 @@ gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, Gdk
 from gi.repository import GLib
 
-GLADE = "serial_comm.glade"
+GLADE = "/home/dfso/devel/python/serial_comm/serial_comm.glade"
 
 # cria a classe do programa
 class SerialComm(Gtk.Window):
@@ -85,7 +85,7 @@ class SerialComm(Gtk.Window):
         return True
 
     def gtk_style(self):
-        css = "style.css"
+        css = "/home/dfso/devel/python/serial_comm/style.css"
         style_provider = Gtk.CssProvider()
         style_provider.load_from_path(css)
 
