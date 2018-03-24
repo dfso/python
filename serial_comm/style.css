@@ -1,0 +1,28 @@
+#window {
+  background-color: #26A69A;
+}
+
+GtkLabel {
+  font-weight: bold;
+  color: white;
+}
+
+#btnConectar {
+  background-color: #2196F3;
+}
+
+#btnConectar:hover {
+  border-width: 1pt;
+  border-style: dashed;
+  border-color: white;
+}
+
+#btnLimpar {
+  background-color: #2196F3;
+}
+
+#btnLimpar:hover {
+  border-width: 1pt;
+  border-style: dashed;
+  border-color: #263238;
+}

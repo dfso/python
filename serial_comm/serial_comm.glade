@@ -90,6 +90,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
+                <property name="opacity">0.98999999999999999</property>
               </object>
               <packing>
                 <property name="left_attach">2</property>

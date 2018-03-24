@@ -35,17 +35,15 @@ class SerialComm(Gtk.Window):
         self.textview = self.builder.get_object("textview")
 
         self.get_ports()
-
+        self.gtk_style()
         self.window.show_all()
 
     def sair(self, window):
         print("saindo...")
         try:
-            print(self.arduino.is_open)
             self.arduino.close()
-            print(self.arduino.is_open)
         except:
-            print("Nenhuma porta estava aberta..")
+            print("nenhuma porta estava aberta..")
         Gtk.main_quit()
 
     def limpar(self, button):
@@ -71,7 +69,6 @@ class SerialComm(Gtk.Window):
 
         port = self.comboPorts.get_active_text()
         baud = self.comboBauds.get_active_text()
-        #self.textview.set_buffer(self.textbuffer)
         self.arduino = serial.Serial(port, baud)
         if self.arduino.inWaiting() > 0:
             self.arduino.flushInput()
@@ -86,6 +83,16 @@ class SerialComm(Gtk.Window):
             self.textbuffer.insert(end_iter, data, length)
 
         return True
+
+    def gtk_style(self):
+        css = "style.css"
+        style_provider = Gtk.CssProvider()
+        style_provider.load_from_path(css)
+
+        Gtk.StyleContext.add_provider_for_screen(
+            Gdk.Screen.get_default(),
+            style_provider,
+            Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
 
 if __name__ == '__main__':
     application = SerialComm()
