@@ -12,6 +12,8 @@ GLADE = "/home/dfso/devel/python/serial_comm/serial_comm.glade"
 
 # cria a classe do programa
 class SerialComm(Gtk.Window):
+    ''' Uma aplicação que realiza a leitura de dados do arduino
+     e exibe em um textview '''
 
     def __init__(self):
 
@@ -39,6 +41,7 @@ class SerialComm(Gtk.Window):
         self.window.show_all()
 
     def sair(self, window):
+        ''' fechas as conexões abertas e sai da aplicação '''
         print("saindo...")
         try:
             self.arduino.close()
@@ -47,34 +50,39 @@ class SerialComm(Gtk.Window):
         Gtk.main_quit()
 
     def limpar(self, button):
+        ''' limpa o textbuffer do textview '''
         self.textbuffer.set_text('')
 
 
     def get_ports(self):
+        ''' obtém as portas seriais do sistema e preenche o combobox
+        com os nomes das portas '''
         ports = list(serial.tools.list_ports.comports())
 
-        print("\n---------------------------------------------")
-        print("\tPortas disponíveis")
+        print("{:-^38}".format("")) #imprime o caracter '-' 38 vezes
+        print("{:*^38}".format("Portas disponíveis"))
 
         for p in ports:
             self.comboPorts.append_text(p[0])
             self.comboPorts.set_active(1)
             print(p[0])
-        print("---------------------------------------------")
+        print("{:-^38}".format(""))
 
     def open_port(self, widget):
-        if self.arduino_id:
-            GLib.source_remove(self.arduino_id)
-            self.arduino.close()
-
+        ''' abre a conexão com a placa e chama a função que lê os dados'''
         port = self.comboPorts.get_active_text()
         baud = self.comboBauds.get_active_text()
         self.arduino = serial.Serial(port, baud)
+        if self.arduino_id:
+            GLib.source_remove(self.arduino_id)
+            self.arduino.close()
+        
         if self.arduino.inWaiting() > 0:
             self.arduino.flushInput()
         self.arduino_id = GLib.timeout_add(10, self.read_data)
 
     def read_data(self):
+        ''' realiza a leitura dos dados vindos da placa '''
         while self.arduino.inWaiting() > 0:
             bytes = self.arduino.read(self.arduino.inWaiting())
             data = bytes.decode(encoding="utf-8", errors="strict")
@@ -85,6 +93,7 @@ class SerialComm(Gtk.Window):
         return True
 
     def gtk_style(self):
+        ''' aplica estilos nos componentes usando um arquivo .css '''
         css = "/home/dfso/devel/python/serial_comm/style.css"
         style_provider = Gtk.CssProvider()
         style_provider.load_from_path(css)
