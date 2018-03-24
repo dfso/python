@@ -7,7 +7,7 @@ import gi
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, Gdk, GLib, GObject
 
-GLADE = "./monitor_ds18b20.glade"
+GLADE = "/home/dfso/devel/python/serial_comm/monitor_ds18b20.glade"
 # cria a classe do programa
 class MonitorDS18B20(Gtk.Window):
 
@@ -15,7 +15,8 @@ class MonitorDS18B20(Gtk.Window):
 
     arduino_id = None
 
-    builder = Gtk.Builder.new_from_file(GLADE)
+    #builder = Gtk.Builder.new_from_file(GLADE)
+    builder = Gtk.Builder()
     builder.add_from_file(GLADE)
 
     window = builder.get_object("window")
@@ -70,11 +71,13 @@ class MonitorDS18B20(Gtk.Window):
             bytes = self.arduino.read(self.arduino.inWaiting())
             data = bytes.decode(encoding="utf-8", errors="strict")
             self.labelTemp.set_text(data)
+            print(data)
 
         return True
 
     def sair(self, widget):
         self.arduino.close()
+        print("fechando...")
         Gtk.main_quit()
 
     def __del__(self):
