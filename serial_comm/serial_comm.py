@@ -73,10 +73,14 @@ class SerialComm(Gtk.Window):
         port = self.comboPorts.get_active_text()
         baud = self.comboBauds.get_active_text()
         self.arduino = serial.Serial(port, baud)
+
+        if self.arduino.is_open:
+            self.btn_conectar.set_sensitive(False)
+
         if self.arduino_id:
             GLib.source_remove(self.arduino_id)
             self.arduino.close()
-        
+
         if self.arduino.inWaiting() > 0:
             self.arduino.flushInput()
         self.arduino_id = GLib.timeout_add(10, self.read_data)
@@ -89,11 +93,13 @@ class SerialComm(Gtk.Window):
             end_iter = self.textbuffer.get_end_iter()
             length = len(data)
             self.textbuffer.insert(end_iter, data, length)
+            print(data) # para fins de debug
 
         return True
 
     def gtk_style(self):
         ''' aplica estilos nos componentes usando um arquivo .css '''
+
         css = "/home/dfso/devel/python/serial_comm/style.css"
         style_provider = Gtk.CssProvider()
         style_provider.load_from_path(css)

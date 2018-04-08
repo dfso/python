@@ -17,6 +17,10 @@ GtkLabel {
   border-color: white;
 }
 
+#btnConectar:insensitive{
+  background-color: dimgray;
+}
+
 #btnLimpar {
   background-color: #2196F3;
 }
