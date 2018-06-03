@@ -16,6 +16,7 @@ class App(QtWidgets.QMainWindow, gui.Ui_MainWindow):
         super().__init__()
         self.setupUi(self)
         self.setStyleSheet(open("style.qss", "r").read())
+        self.style_app(3)
         self.text_log.setReadOnly(True)
         self.actionDesconectar.setDisabled(True)
         
@@ -31,6 +32,31 @@ class App(QtWidgets.QMainWindow, gui.Ui_MainWindow):
         self.setWindowIcon(QtGui.QIcon("../images/serial.png"))
         
         self.update_status_bar("Aplicação iniciada")
+        self.create_styles_menu()
+    
+
+    def create_styles_menu(self):
+        menu_bar = self.menuBar()
+        menu_styles = menu_bar.addMenu("Styles")
+        styles = QtWidgets.QStyleFactory.keys()
+
+        actions_menu = []
+
+        for s in styles:
+            actions_menu.append(QtWidgets.QAction(s, self))
+
+        menu_styles.addActions(actions_menu)
+
+        for a in actions_menu:
+            a.triggered.connect(self.change_style)
+        print(menu_styles.activeAction())
+    
+    def change_style(self):
+        print(self.menuWidget())
+
+    def style_app(self, index):
+        styles = QtWidgets.QStyleFactory.keys()
+        self.setStyle(QtWidgets.QStyleFactory.create(styles[index]))
                
     def reload_ports(self):
         self.combo_box_portas.clear()

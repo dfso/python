@@ -1,16 +1,28 @@
+QMainWindow {
+    background-color: #263238;
+}
+
+QStatusBar {
+    color: white;
+    font-weight: 700;
+}
+
 QLabel {
     font-family: "Consolas";
+    color: white;
+    font-weight: 700;
     font-size: 14px;
- }
+}
 
- QComboBox {
+QComboBox {
     font-family: "Consolas";
     font-size: 14px;
- }
+}
 
- QGroupBox {
+QGroupBox {
     font-family: "Consolas";
+    border: 2px dotted #FBC02D;
+    color: white;
+    font-weight: 700;
     font-size: 14px;
- }
-
-
+}

@@ -11,7 +11,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(640, 482)
+        MainWindow.setGeometry(200, 200, 640, 482)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
@@ -97,6 +97,9 @@ class Ui_MainWindow(object):
         self.action_sobre = QtWidgets.QAction(QtGui.QIcon(
             "../images/sobre.png"), "Sobre", MainWindow)
         self.action_sobre.setShortcut("F12")
+
+        self.combo_box_portas.setMinimumWidth(200)
+        self.combo_box_bauds.setMinimumWidth(200)
 
         self.toolBar.addAction(self.actionConectar)
         self.toolBar.addAction(self.actionDesconectar)
