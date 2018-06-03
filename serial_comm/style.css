@@ -17,7 +17,7 @@ GtkLabel {
   border-color: white;
 }
 
-#btnConectar:insensitive{
+#btnConectar:disabled{
   background-color: dimgray;
 }
 

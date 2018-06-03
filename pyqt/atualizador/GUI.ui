@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>640</width>
+    <height>480</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Atualizador @dfso</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QListWidget" name="lista"/>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>640</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu_acoes">
+    <property name="title">
+     <string>&amp;Ações</string>
+    </property>
+    <addaction name="action_verificar"/>
+   </widget>
+   <widget class="QMenu" name="menu_sobre">
+    <property name="title">
+     <string>Sobre...</string>
+    </property>
+   </widget>
+   <addaction name="menu_acoes"/>
+   <addaction name="menu_sobre"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="action_verificar">
+   <property name="text">
+    <string>&amp;Verificar atualizações</string>
+   </property>
+   <property name="shortcut">
+    <string>F5</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

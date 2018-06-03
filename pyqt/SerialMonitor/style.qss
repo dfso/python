@@ -1,0 +1,16 @@
+QLabel {
+    font-family: "Consolas";
+    font-size: 14px;
+ }
+
+ QComboBox {
+    font-family: "Consolas";
+    font-size: 14px;
+ }
+
+ QGroupBox {
+    font-family: "Consolas";
+    font-size: 14px;
+ }
+
+

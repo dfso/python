@@ -9,19 +9,16 @@ import time
 
 ports = list(serial.tools.list_ports.comports())
 for p in ports:
-    print p[0]
+    print (p[0])
 
 porta = '/dev/ttyUSB0'
 
 arduino = serial.Serial(porta, 9600, timeout=1)
-time.sleep(2) # wait for Arduino
-
+time.sleep(2)  # wait for Arduino
 
 
 while (True):
     dados = arduino.readline()
     if dados:
         print("Temperatura: ")
-        print(dados.rstrip('\n'))
-
-
+        print(dados)

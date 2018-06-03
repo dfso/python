@@ -65,7 +65,7 @@ class SerialComm(Gtk.Window):
         for p in ports:
             self.comboPorts.append_text(p[0])
             self.comboPorts.set_active(1)
-            print(p[0])
+            print("{} ; {}".format(p.device, p.description))
         print("{:-^38}".format(""))
 
     def open_port(self, widget):
