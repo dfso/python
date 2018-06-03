@@ -101,6 +101,13 @@ class Ui_MainWindow(object):
         self.combo_box_portas.setMinimumWidth(200)
         self.combo_box_bauds.setMinimumWidth(200)
 
+        self.actionConectar.setToolTip("Conectar[F3]")
+        self.actionDesconectar.setToolTip("Desconectar[F7]")
+        self.actionAtualizar.setToolTip("Atualizar[F5]")
+        self.actionLimpar.setToolTip("Limpar[Ctrl+L]")
+        self.action_sobre.setToolTip("Sobre...[F12]")
+        self.actionSair.setToolTip("Sair[Ctrl+Q]")
+
         self.toolBar.addAction(self.actionConectar)
         self.toolBar.addAction(self.actionDesconectar)
         self.toolBar.addAction(self.actionAtualizar)

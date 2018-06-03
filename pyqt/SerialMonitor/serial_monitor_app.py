@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import sys
+import functools
 import serial.tools.list_ports
 from PyQt5 import QtWidgets, QtGui
 
@@ -15,8 +16,8 @@ class App(QtWidgets.QMainWindow, gui.Ui_MainWindow):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
-        self.setStyleSheet(open("style.qss", "r").read())
-        self.style_app(3)
+        # self.setStyleSheet(open("style.qss", "r").read())
+        # self.style_app(3)
         self.text_log.setReadOnly(True)
         self.actionDesconectar.setDisabled(True)
         
@@ -36,28 +37,35 @@ class App(QtWidgets.QMainWindow, gui.Ui_MainWindow):
     
 
     def create_styles_menu(self):
+        styles = QtWidgets.QStyleFactory.keys()
+        print(styles[0])
         menu_bar = self.menuBar()
         menu_styles = menu_bar.addMenu("Styles")
-        styles = QtWidgets.QStyleFactory.keys()
 
-        actions_menu = []
+        act_adwaita = QtWidgets.QAction("adwaita", self)
+        act_adwaita.triggered.connect(lambda: self.change_style("adwaita"))
+        act_Breeze = QtWidgets.QAction("Breeze", self)
+        act_Breeze.triggered.connect(lambda: self.change_style("Breeze"))
+        act_Oxygen = QtWidgets.QAction("Oxygen", self)
+        act_Oxygen.triggered.connect(lambda: self.change_style("Oxygen"))
+        act_QtCurve = QtWidgets.QAction("QtCurve", self)
+        act_QtCurve.triggered.connect(lambda: self.change_style("QtCurve"))
+        act_Windows = QtWidgets.QAction("Windows", self)
+        act_Windows.triggered.connect(lambda: self.change_style("Windows"))
+        act_Fusion = QtWidgets.QAction("Fusion", self)
+        act_Fusion.triggered.connect(lambda: self.change_style("Fusion"))
 
-        for s in styles:
-            actions_menu.append(QtWidgets.QAction(s, self))
+        menu_styles.addAction(act_adwaita)
+        menu_styles.addAction(act_Breeze)
+        menu_styles.addAction(act_Oxygen)
+        menu_styles.addAction(act_QtCurve)
+        menu_styles.addAction(act_Windows)
+        menu_styles.addAction(act_Fusion)
 
-        menu_styles.addActions(actions_menu)
+    def change_style(self, style):
+        QtWidgets.QApplication.setStyle(QtWidgets.QStyleFactory.create(style))
+        print(style)
 
-        for a in actions_menu:
-            a.triggered.connect(self.change_style)
-        print(menu_styles.activeAction())
-    
-    def change_style(self):
-        print(self.menuWidget())
-
-    def style_app(self, index):
-        styles = QtWidgets.QStyleFactory.keys()
-        self.setStyle(QtWidgets.QStyleFactory.create(styles[index]))
-               
     def reload_ports(self):
         self.combo_box_portas.clear()
         portas = serial.tools.list_ports.comports()
@@ -111,7 +119,7 @@ class App(QtWidgets.QMainWindow, gui.Ui_MainWindow):
         msg = """<font face="Consolas">Muito obrigado por usar nossa aplicação!</font>
                  <p>Essa aplicação monitora dados vindos de uma porta serial.</p>
                  <p>autor: @dfso</p>
-                 <p>versão do software: 1.00a Junho/2018</p>
+                 <p>versão do software: 1.1x Junho/2018</p>
                  <p>Visite-nos em: <a href="https://github.com/dfso">Github @dfso</a></p>
                  <p>Ícones disponíveis em: <a href="https://icons8.com/">https://icons8.com/</a></p>"""
                  
