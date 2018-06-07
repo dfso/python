@@ -1,10 +1,12 @@
-from PyQt5 import QtGui, QtWidgets, QtCore
-from PyQt5.QtWidgets import QAction
-from PyQt5.QtWidgets import QMessageBox
-from PyQt5.QtGui import QIcon
 import sys
 
+from PyQt5 import QtGui, QtWidgets, QtCore
+import PyQt5
+
+
 class MyToolBar(QtWidgets.QMainWindow):
+
+    imgs_path = "../images/"
 
     def __init__(self):
         super().__init__()
@@ -20,7 +22,7 @@ class MyToolBar(QtWidgets.QMainWindow):
     def init_UI(self):
 
         self.setWindowTitle(self.titulo)
-        self.setWindowIcon(QtGui.QIcon("./images/app.png"))
+        self.setWindowIcon(QtGui.QIcon(self.imgs_path + "app.png"))
         self.setGeometry(self.top, self.left, self.largura, self.altura)
 
         self.create_toolbar()
@@ -31,30 +33,30 @@ class MyToolBar(QtWidgets.QMainWindow):
         tool_bar = self.addToolBar("ToolBar")
         tool_bar.setIconSize(QtCore.QSize(48, 48))
         
-        action_open = QAction(QtGui.QIcon("./images/open.png"), "Abrir", self)
+        action_open = QtWidgets.QAction(QtGui.QIcon(self.imgs_path + "open.png"), "Abrir", self)
         action_open.setShortcut("Ctrl+O")
 
-        action_new = QAction(QtGui.QIcon("./images/new.png"), "Novo", self)
+        action_new = QtWidgets.QAction(QtGui.QIcon(self.imgs_path + "new.png"), "Novo", self)
         action_new.setShortcut("Ctrl+N")
 
-        action_save= QAction(QtGui.QIcon("./images/save.png"), "Salvar", self)
+        action_save= QtWidgets.QAction(QtGui.QIcon(self.imgs_path + "save.png"), "Salvar", self)
         action_save.setShortcut("Ctrl+S")
 
-        action_copy= QAction(QtGui.QIcon("./images/copy.png"), "Copiar", self)
+        action_copy= QtWidgets.QAction(QtGui.QIcon(self.imgs_path + "copy.png"), "Copiar", self)
         action_copy.setShortcut("Ctrl+C")
 
-        action_paste= QAction(QtGui.QIcon("./images/paste.png"), "Colar", self)
+        action_paste= QtWidgets.QAction(QtGui.QIcon(self.imgs_path + "paste.png"), "Colar", self)
         action_paste.setShortcut("Ctrl+V")
 
-        action_delete= QAction(QtGui.QIcon("./images/excluir.png"), "Deletar", self)
+        action_delete= QtWidgets.QAction(QtGui.QIcon(self.imgs_path + "excluir.png"), "Deletar", self)
         action_delete.setShortcut("Delete")
         action_delete.triggered.connect(self.delete)
 
-        action_sair = QAction(QtGui.QIcon("./images/sair.png"), "Sair", self)
+        action_sair = QtWidgets.QAction(QtGui.QIcon(self.imgs_path + "sair.png"), "Sair", self)
         action_sair.setShortcut("Ctrl+Q")
         action_sair.triggered.connect(self.sair)
 
-        action_sobre = QAction(QtGui.QIcon("./images/sobre.png"), "Sobre", self)
+        action_sobre = QtWidgets.QAction(QtGui.QIcon(self.imgs_path + "sobre.png"), "Sobre", self)
         action_sobre.setShortcut("F12")
         action_sobre.triggered.connect(self.sobre)
         
@@ -78,7 +80,7 @@ class MyToolBar(QtWidgets.QMainWindow):
                  <h3>autor: @dfso</h3>
                  <h3>versão do software: 1.00a</h3>
                  <p>Visite-nos em: <a href="https://github.com/dfso">Github @dfso</a></p>"""
-        QMessageBox.about(self, "Sobre", msg)
+        QtWidgets.QMessageBox.about(self, "Sobre", msg)
 
 
 app = QtWidgets.QApplication(sys.argv)
