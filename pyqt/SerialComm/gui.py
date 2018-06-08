@@ -39,6 +39,7 @@ class MyWindow(QtWidgets.QWidget):
 
         form_layout_cmd = QtWidgets.QFormLayout()
         self.line_cmd = QtWidgets.QLineEdit()
+        self.line_cmd.setPlaceholderText("Entre com um comando")
         form_layout_cmd.addRow(QtWidgets.QLabel("Comando"), self.line_cmd)
 
         hbox_edit = QtWidgets.QHBoxLayout()
@@ -47,7 +48,7 @@ class MyWindow(QtWidgets.QWidget):
         hbox_edit.addWidget(self.text_log)
 
         self.btn_sair = QtWidgets.QPushButton("Sair")
-        self.btn_sair.clicked.connect(QtWidgets.QApplication.exit)
+        #self.btn_sair.clicked.connect(QtWidgets.QApplication.exit)
 
         self.vbox_root.addLayout(self.hbox_conexao)
         self.vbox_root.addLayout(form_layout_cmd)
