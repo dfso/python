@@ -20,11 +20,8 @@ class SerialThreadRead(QtCore.QThread):
         self.baud = baud
         self.open_port()
     
-        #self.arduino = serial.Serial(self.port_name, self.baud)
-        #self.arduino.close()
-    
     def run(self):
-        print("Thread de leitura iniciada.")
+        print("Thread {} leitura iniciada".format(self.currentThreadId()))
         while True:
             data = self.device.readline().decode().strip()
             self.signal.emit(str(data)) # pipe
@@ -33,7 +30,6 @@ class SerialThreadRead(QtCore.QThread):
     def open_port(self):
         try:
             self.device = serial.Serial(self.port_name, self.baud)
-            #self.arduino.open()
             print("Conexão estabelecida.")
             self.connected = True
         except SerialException as ex:

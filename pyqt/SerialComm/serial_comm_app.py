@@ -29,9 +29,7 @@ class App(gui.MyWindow):
 
     def keyPressEvent(self, event):
         if event.key() == QtCore.Qt.Key_Up:
-            print(self.item)
-            print(len(self.cmds))
-            print("key_Up pressed")
+            print(self.cmds)
             try:
                 self.line_cmd.setText(self.cmds[self.item-1])
                 self.item = self.item - 1
@@ -81,11 +79,8 @@ class App(gui.MyWindow):
 
     
     def send_cmd(self):
-
         self.device = serial_thread_write.SerialThreadWrite(
             self.arduino.device, self.line_cmd.text())
-        if self.device.isRunning():
-            self.device.stop_work()
         self.device.start()
 
         self.text_log.append(self.line_cmd.text())
@@ -93,6 +88,8 @@ class App(gui.MyWindow):
             self.cmds.append(self.line_cmd.text())
             self.item = self.item + 1
         self.line_cmd.clear()
+        self.device.wait()
+        self.device.stop_work()
     
     def reload_ports(self):
         self.combo_portas.clear()
@@ -100,9 +97,6 @@ class App(gui.MyWindow):
         self.combo_portas.addItems(portas)
         self.combo_portas.setCurrentIndex(1)
         print(portas)
-
-        
-
 
 
 app = QtWidgets.QApplication(sys.argv)
