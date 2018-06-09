@@ -1,15 +1,15 @@
 import sys
 
-from PyQt5 import QtWidgets, QtCore
+from PyQt5 import QtWidgets, QtCore, QtGui
 
 
 class MyWindow(QtWidgets.QWidget):
-    
+
     def setup_ui(self, window):
         self.setGeometry(200, 200, 720, 480)
-        self.setWindowTitle("PyQt5 Layouts @dfso")
+        self.setWindowTitle("PyQt5 Serial Controller @dfso")
 
-        self.vbox_root = QtWidgets.QVBoxLayout() # layout root
+        self.vbox_root = QtWidgets.QVBoxLayout()  # layout root
 
         self.hbox_conexao = QtWidgets.QHBoxLayout()
         self.group_device = QtWidgets.QGroupBox()
@@ -23,8 +23,8 @@ class MyWindow(QtWidgets.QWidget):
         self.group_grid = QtWidgets.QGridLayout(self.group_device)
         self.group_grid.addWidget(self.label_portas, 0, 0, 1, 1)
         self.group_grid.addWidget(self.combo_portas, 0, 1, 1, 1)
-        self.group_grid.addWidget(self.label_bauds, 1, 0, 1 , 1)
-        self.group_grid.addWidget(self.combo_bauds, 1, 1, 1 , 1)
+        self.group_grid.addWidget(self.label_bauds, 1, 0, 1, 1)
+        self.group_grid.addWidget(self.combo_bauds, 1, 1, 1, 1)
 
         grid_btns = QtWidgets.QGridLayout()
         self.btn_conectar = QtWidgets.QPushButton("Conectar")
@@ -44,7 +44,15 @@ class MyWindow(QtWidgets.QWidget):
 
         hbox_edit = QtWidgets.QHBoxLayout()
         self.scroll_area = QtWidgets.QScrollArea()
+
+        font = QtGui.QFont()
+        font.setFamily("Consolas")
+        font.setPointSize(11)
+
         self.text_log = QtWidgets.QTextEdit(self.scroll_area)
+        # self.text_log.setFont(font)
+        window.setFont(font)
+        self.text_log.setReadOnly(True)
         hbox_edit.addWidget(self.text_log)
 
         self.btn_sair = QtWidgets.QPushButton("Sair")

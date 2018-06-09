@@ -1,23 +1,29 @@
 import serial.tools.list_ports
-import serial
+from serial import SerialException
 
 
-class SerialTool():
+class SerialTool:
 
     @staticmethod
     def listar_portas():
-        """Lista todas as portas Comm detectadas no sistema.
-        
-        Returns:
-            dispositivos[str] -- uma lista contendo os nomes das portas Comm
         """
+        Lista todas as portas Comm detectadas no sistema.
 
+        :return: dispositivos: uma lista [str] com os nomes dos dispositivos.
+        """
         portas = serial.tools.list_ports.comports()
         dispositivos = []
 
         for p in portas:
             dispositivos.append(p.device)
 
+        print("Dispositivos detectados: {}".format(dispositivos))
         return dispositivos
 
-
+    @staticmethod
+    def conectar(dispositivo, bauds):
+        try:
+            device = serial.Serial(dispositivo, bauds)
+            return device
+        except SerialException as err:
+            print(err)
