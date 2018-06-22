@@ -28,23 +28,22 @@ class Ui_MainWindow(object):
         group_conexao = QtWidgets.QGroupBox("Conexão", centralwidget)
         group_conexao.setMaximumSize(QtCore.QSize(16777215, 150))
         formLayout = QtWidgets.QFormLayout(group_conexao)
+        formLayout.setLabelAlignment(QtCore.Qt.AlignLeft)
+        formLayout.setFieldGrowthPolicy(
+            QtWidgets.QFormLayout.AllNonFixedFieldsGrow)
         label_porta = QtWidgets.QLabel("<b>Porta</b>", group_conexao)
-        formLayout.setWidget(0, QtWidgets.QFormLayout.LabelRole, label_porta)
         self.combo_portas = QtWidgets.QComboBox(group_conexao)
-        formLayout.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.combo_portas)
+        formLayout.addRow(label_porta, self.combo_portas)
         label_bauds = QtWidgets.QLabel("<b>Baud Rate</b>", group_conexao)
-        formLayout.setWidget(1, QtWidgets.QFormLayout.LabelRole, label_bauds)
         self.combo_bauds = QtWidgets.QComboBox(group_conexao)
         bauds = ["9600", "115200"]
         self.combo_bauds.addItems(bauds)
-        formLayout.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.combo_bauds)
+        formLayout.addRow(label_bauds, self.combo_bauds)
 
         label_status_port = QtWidgets.QLabel(
             "<b><font color=blue>Estado da porta: </font></b>", group_conexao)
-        formLayout.setWidget(2, QtWidgets.QFormLayout.LabelRole, label_status_port)
         self.label_estado_porta = QtWidgets.QLabel("...", group_conexao)
-        formLayout.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.label_estado_porta)
-
+        formLayout.addRow(label_status_port, self.label_estado_porta)
 
         horizontalLayout.addWidget(group_conexao)
         group_jog = QtWidgets.QGroupBox("JOG", centralwidget)
@@ -77,6 +76,8 @@ class Ui_MainWindow(object):
         group_posicao = QtWidgets.QGroupBox("Posição", centralwidget)
         group_posicao.setMaximumSize(QtCore.QSize(16777215, 150))
         formLayout_2 = QtWidgets.QFormLayout(group_posicao)
+        formLayout_2.setFieldGrowthPolicy(
+            QtWidgets.QFormLayout.AllNonFixedFieldsGrow)
         label_x = QtWidgets.QLabel("X", group_posicao)
         formLayout_2.setWidget(0, QtWidgets.QFormLayout.LabelRole, label_x)
         self.lcd_x = QtWidgets.QLCDNumber(group_posicao)

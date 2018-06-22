@@ -24,6 +24,9 @@ class App(QtWidgets.QMainWindow, gui.Ui_MainWindow):
         super().__init__()
         self.setupUi(self)
 
+        # QtWidgets.QApplication.setStyle(
+        #     QtWidgets.QStyleFactory.create("fusion"))
+
         self.actionDesconectar.setDisabled(True)
         self.line_cmd.setDisabled(True)
 
