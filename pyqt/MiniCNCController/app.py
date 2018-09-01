@@ -23,6 +23,11 @@ class App(QtWidgets.QMainWindow, gui.Ui_MainWindow):
         super().__init__()
         self.setupUi(self)
 
+        # muda o style da aplicação
+        QtWidgets.QApplication.setStyle(
+            QtWidgets.QStyleFactory.create('Fusion')
+        )
+
         self.actionDesconectar.setDisabled(True)
         self.line_cmd.setDisabled(True)
 
