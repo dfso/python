@@ -8,6 +8,7 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+
 class Ui_MainWindow(object):
 
     images_path = "./images/"
@@ -31,20 +32,23 @@ class Ui_MainWindow(object):
         label_porta = QtWidgets.QLabel("<b>Porta</b>", group_conexao)
         formLayout.setWidget(0, QtWidgets.QFormLayout.LabelRole, label_porta)
         self.combo_portas = QtWidgets.QComboBox(group_conexao)
-        formLayout.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.combo_portas)
+        formLayout.setWidget(
+            0, QtWidgets.QFormLayout.FieldRole, self.combo_portas)
         label_bauds = QtWidgets.QLabel("<b>Baud Rate</b>", group_conexao)
         formLayout.setWidget(1, QtWidgets.QFormLayout.LabelRole, label_bauds)
         self.combo_bauds = QtWidgets.QComboBox(group_conexao)
         bauds = ["9600", "115200"]
         self.combo_bauds.addItems(bauds)
-        formLayout.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.combo_bauds)
+        formLayout.setWidget(
+            1, QtWidgets.QFormLayout.FieldRole, self.combo_bauds)
 
         label_status_port = QtWidgets.QLabel(
-            "<b><font color=blue>Estado da porta: </font></b>", group_conexao)
-        formLayout.setWidget(2, QtWidgets.QFormLayout.LabelRole, label_status_port)
+            "<b>Estado da porta: </b>", group_conexao)
+        formLayout.setWidget(
+            2, QtWidgets.QFormLayout.LabelRole, label_status_port)
         self.label_estado_porta = QtWidgets.QLabel("...", group_conexao)
-        formLayout.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.label_estado_porta)
-
+        formLayout.setWidget(
+            2, QtWidgets.QFormLayout.FieldRole, self.label_estado_porta)
 
         horizontalLayout.addWidget(group_conexao)
         group_jog = QtWidgets.QGroupBox("JOG", centralwidget)
@@ -105,7 +109,8 @@ class Ui_MainWindow(object):
         label_cmd = QtWidgets.QLabel("Comando", centralwidget)
         form_cmd.setWidget(0, QtWidgets.QFormLayout.LabelRole, label_cmd)
         self.line_cmd = QtWidgets.QLineEdit(centralwidget)
-        self.line_cmd.setPlaceholderText("Aqui você envia os comandos para a MiniCNC")
+        self.line_cmd.setPlaceholderText(
+            "Aqui você envia os comandos para a MiniCNC")
         form_cmd.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.line_cmd)
         verticalLayout.addLayout(form_cmd)
         self.tabWidget = QtWidgets.QTabWidget(centralwidget)
@@ -161,7 +166,6 @@ class Ui_MainWindow(object):
         self.action_about.setToolTip(
             "<b>Sobre<Font color=#009688>[F1]</font></b>"
         )
-
 
         self.menu_log = self.menubar.addMenu("&Log")
         self.action_limpar = QtWidgets.QAction(

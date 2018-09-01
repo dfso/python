@@ -11,9 +11,7 @@ class ReadThread(QtCore.QThread):
         self.dispositivo = dispositivo
 
     def run(self):
-        print("Thread de leitura {} iniciada".format(
-            self.currentThreadId()
-        ))
+        print(f'Thread de leitura {self.currentThreadId()} iniciada')
         while True:
             data = self.dispositivo.readline().decode().strip()
             self.signal.emit(str(data))  # pipe
@@ -23,7 +21,7 @@ class ReadThread(QtCore.QThread):
         self.terminate()
         self.wait()
         if self.isFinished():
-            print("Thread de leitura finalizada.")
+            print('Thread de leitura finalizada.')
 
 
 class WriteThread(QtCore.QThread):
@@ -35,9 +33,7 @@ class WriteThread(QtCore.QThread):
         self.data = data + '\n'
 
     def run(self):
-        print("Thread de escrita {} icinicada".format(
-            self.currentThreadId()
-        ))
+        print(f'Thread de escrita {self.currentThreadId()} icinicada')
         self.dispositivo.write(self.data.encode())
         print(self.data)
 
@@ -45,4 +41,4 @@ class WriteThread(QtCore.QThread):
         self.terminate()
         self.wait()
         if self.isFinished():
-            print("Thread de escrita finalizada.")
+            print('Thread de escrita finalizada.')
