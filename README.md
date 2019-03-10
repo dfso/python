@@ -1,6 +1,6 @@
 # Repositório de códigos python
 
-Alguns pequenos projetos em python que utilizam tecnologias como PyQt5, GTK, pyserial, sql, orientação a objetos e outras.
+Alguns projetos pessoais em python que utilizam tecnologias como PyQt5, GTK, pyserial, sql, orientação a objetos e outras.
 
 
 ## Built With
