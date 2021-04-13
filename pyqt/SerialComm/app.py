@@ -47,9 +47,9 @@ class App(gui.MyWindow):
         self.read_thread.start()
 
     def desconectar(self):
-        self.dispositivo.close()
         self.read_thread.stop_work()
-
+        self.dispositivo.close()
+        
         if self.write_thread is None:
             pass
         else:

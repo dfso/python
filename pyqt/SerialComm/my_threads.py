@@ -35,7 +35,7 @@ class WriteThread(QtCore.QThread):
         self.data = data + '\n'
 
     def run(self):
-        print("Thread de escrita {} icinicada".format(
+        print("Thread de escrita {} iniciada".format(
             self.currentThreadId()
         ))
         self.dispositivo.write(self.data.encode())
