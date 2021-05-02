@@ -22,14 +22,14 @@ class App(QtWidgets.QMainWindow, thread_gui.Ui_MainWindow):
 
 
 class ThreadClass(QtCore.QThread):
-    update_progressbar = pyqtSignal(float)
+    update_progressbar = pyqtSignal(int)
 
     def __init__(self, parent=None):
         super(ThreadClass, self).__init__(parent)
     
     def run(self):
         while True:
-            val = psutil.cpu_percent(interval=1)
+            val = int(psutil.cpu_percent(interval=1))
             self.update_progressbar.emit(val)
             print(val)
 
