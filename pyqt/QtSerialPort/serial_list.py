@@ -5,7 +5,7 @@ obter informações em https://doc.qt.io/qt-5.10/qserialportinfo.html
 '''
 
 
-from PyQt5 import QtSerialPort, QtCore
+from PyQt5 import QtSerialPort
 
 portas = QtSerialPort.QSerialPortInfo.availablePorts()
 
