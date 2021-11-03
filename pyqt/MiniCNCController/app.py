@@ -11,7 +11,7 @@ class App(QtWidgets.QMainWindow, gui.Ui_MainWindow):
 
     pyqt_version = QtCore.PYQT_VERSION_STR
     autor = "dfso"
-    versao = "1.0.b / agosto-2018"
+    versao = "1.1.a / novembro-2021"
     github = "https://github.com/dfso"
     icons_web = "https://icons8.com"
 
@@ -82,10 +82,10 @@ class App(QtWidgets.QMainWindow, gui.Ui_MainWindow):
         """Envia comandos para o dispositivo conectado.
         """
         self.write_thread = threads_r_w.WriteThread(
-            self.dispositivo, self.line_cmd.text())
+            self.dispositivo, self.line_cmd.text().upper())
         self.write_thread.start()
         self.text_log.append("<b><font color = green>Comando: "
-                             + self.line_cmd.text() + "</font></b>")
+                             + self.line_cmd.text().upper() + "</font></b>")
 
     def reload_portas(self):
         """Atualiza a lista de dispositivos detectados.
