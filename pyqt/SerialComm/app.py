@@ -62,10 +62,10 @@ class App(gui.MyWindow):
             self.line_cmd.setDisabled(True)
 
     def enviar_comando(self):
-        self.write_thread = my_threads.WriteThread(self.dispositivo, self.line_cmd.text())
+        self.write_thread = my_threads.WriteThread(self.dispositivo, self.line_cmd.text().upper())
         self.write_thread.start()
         self.text_log.append("<b><font color = green>Comando: "
-                             + self.line_cmd.text() + "</font></b>")
+                             + self.line_cmd.text().upper() + "</font></b>")
 
     def reload_ports(self):
         """

@@ -65,9 +65,8 @@ class App(QtWidgets.QMainWindow, gui.Ui_MainWindow):
     def desconectar(self):
         """Fecha a conexão com o dispositivo.
         """
-
-        self.dispositivo.close()
         self.read_thread.stop_work()
+        self.dispositivo.close()
         if self.write_thread is None:
             pass
         else:
@@ -82,7 +81,6 @@ class App(QtWidgets.QMainWindow, gui.Ui_MainWindow):
     def enviar_cmd(self):
         """Envia comandos para o dispositivo conectado.
         """
-
         self.write_thread = threads_r_w.WriteThread(
             self.dispositivo, self.line_cmd.text())
         self.write_thread.start()
